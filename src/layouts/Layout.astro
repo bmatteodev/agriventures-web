@@ -1,0 +1,77 @@
+---
+// --- Component Script (JavaScript) ---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+<!-- --- Component Template (HTML + Astro Expressions) --- -->
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <meta name="description" content={description}>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para iconos sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- ========== HEADER ========== -->
+    <header class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-800">
+                <a href="/">Agriventures</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/#servicios" class="text-gray-600 hover:text-green-700 transition duration-300">Servicios</a>
+                <a href="/productos" class="text-gray-600 hover:text-green-700 transition duration-300">Productos</a>
+                <a href="/#equipo" class="text-gray-600 hover:text-green-700 transition duration-300">Nosotros</a>
+                <a href="/#contacto" class="bg-green-700 text-white px-5 py-2 rounded-full hover:bg-green-800 transition duration-300 shadow">Contáctanos</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- La etiqueta <slot /> es donde Astro insertará el contenido de cada página -->
+    <slot />
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.instagram.com/agriventures_cl/" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=56954121602" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-whatsapp fa-2x"></i></a>
+                    <a href="https://www.linkedin.com/company/agriventures-cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    <a href="https://www.facebook.com/Agriventures.cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://x.com/agriventures_cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-twitter fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6">
+                <p>&copy; {new Date().getFullYear()} Agriventures. Todos los derechos reservados.</p>
+                <div class="mt-4 flex justify-center items-center space-x-4">
+                    <a href="mailto:ventas@agriventures.cl" class="text-gray-400 hover:text-white">ventas@agriventures.cl</a>
+                    <span class="text-gray-500">&bull;</span>
+                    <a href="tel:+56912345678" class="text-gray-400 hover:text-white">+56 9 1234 5678</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

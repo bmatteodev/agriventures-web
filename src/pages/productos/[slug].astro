@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products, type Product } from '../../data/products';
+
+// Esta función le dice a Astro qué páginas debe crear.
+// Creará una página por cada producto en nuestro archivo de datos.
+export async function getStaticPaths() {
+  return products.map(product => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props as { product: Product };
+---
+<Layout title={product.nombre} description={`Ficha técnica y detalles del producto ${product.nombre}`}>
+    <main class="pt-28 pb-16">
+        <div class="container mx-auto px-6">
+            <!-- Contenedor principal del producto -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                
+                <!-- Columna Izquierda: Imagen -->
+                <div>
+                    <img src={product.imagenUrl} alt={`Imagen de ${product.nombre}`} class="w-full rounded-lg shadow-xl object-cover">
+                </div>
+
+                <!-- Columna Derecha: Detalles -->
+                <div>
+                    <span class="text-sm font-semibold text-green-600 bg-green-100 px-3 py-1 rounded-full">{product.grupo}</span>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mt-4 mb-4">{product.nombre}</h1>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">{product.descripcion}</p>
+
+                    <!-- Botón de Ficha Técnica -->
+                    <a href={product.fichaTecnicaUrl} download class="inline-block bg-green-700 text-white font-bold px-8 py-4 rounded-lg hover:bg-green-800 transition duration-300 shadow-lg mb-12">
+                        <i class="fa-solid fa-file-arrow-down mr-2"></i>
+                        Descargar Ficha Técnica
+                    </a>
+
+                    <!-- Tabla de Detalles Técnicos -->
+                    <div class="border-t pt-6">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-700">Detalles Técnicos</h3>
+                        <div class="space-y-3">
+                             {product.grupo2 && <div class="flex justify-between"><strong class="text-gray-600">Grupo:</strong> <span>{product.grupo2}</span></div>}
+                            {product.tipo && <div class="flex justify-between"><strong class="text-gray-600">Tipo:</strong> <span>{product.tipo}</span></div>}
+                            {product.formulacion && <div class="flex justify-between"><strong class="text-gray-600">Formulación:</strong> <span>{product.formulacion}</span></div>}
+                            {product.modoDeAccion && <div class="flex justify-between"><strong class="text-gray-600">Modo de Acción:</strong> <span>{product.modoDeAccion}</span></div>}
+                            {product.composicion && <div class="flex justify-between"><strong class="text-gray-600">Composición:</strong> <span>{product.composicion}</span></div>}
+                            {product.calcio_c20 && <div class="flex justify-between"><strong class="text-gray-600">Calcio C₂O:</strong> <span>{product.calcio_c20}</span></div>}
+                            {product.acidos && <div class="flex justify-between"><strong class="text-gray-600">Acidos polihidroxicarboxílicos:</strong> <span>{product.acidos}</span></div>}
+                            {product.zinc_soluble_en_agua && <div class="flex justify-between"><strong class="text-gray-600">Zinc (Zn) Soluble en agua:</strong> <span>{product.zinc_soluble_en_agua}</span></div>}
+                            {product.zinc && <div class="flex justify-between"><strong class="text-gray-600">Zinc (Zn):</strong> <span>{product.zinc}</span></div>}
+                            {product.magnesio && <div class="flex justify-between"><strong class="text-gray-600">Magnesio (MgO):</strong> <span>{product.magnesio}</span></div>}
+                            {product.aminoacidos_totales && <div class="flex justify-between"><strong class="text-gray-600">Aminoácidos totales:</strong> <span>{product.aminoacidos_totales}</span></div>}
+                            {product.descrip_adicional && <div class="flex justify-between"><strong class="text-gray-600">Complejado con Lebbina como mejorador de los principios activos</strong> <span>{product.descrip_adicional}</span></div>}
+                            {product.zinc_edta_quelado && <div class="flex justify-between"><strong class="text-gray-600">Zinc (Zn) EDTA Quelado:</strong> <span>{product.zinc_edta_quelado}</span></div>}
+                            {product.quelado_con_edta && <div class="flex justify-between"><strong class="text-gray-600">Quelado con EDTA</strong> <span>{product.quelado_con_edta}</span></div>}
+                            {product.agente_acomplejante2 && <div class="flex justify-between"><strong class="text-gray-600">Agente Acomplejante:</strong> <span>{product.agente_acomplejante2}</span></div>}
+                            {product.manganeso_soluble_en_agua && <div class="flex justify-between"><strong class="text-gray-600">Manganeso (Mn) soluble en agua:</strong> <span>{product.manganeso_soluble_en_agua}</span></div>}
+                            {product.manganeso && <div class="flex justify-between"><strong class="text-gray-600">Manganeso (Mn):</strong> <span>{product.manganeso}</span></div>}
+                            {product.manganeso_complejado && <div class="flex justify-between"><strong class="text-gray-600">Manganeso (Mn) Complejado:</strong> <span>{product.manganeso_complejado}</span></div>}
+                            {product.agente_acomplejante && <div class="flex justify-between"><strong class="text-gray-600">Agente Acomplejante EDTA:</strong> <span>{product.agente_acomplejante}</span></div>}
+                            {product.nitrogeno_n_total && <div class="flex justify-between"><strong class="text-gray-600">Nitrógeno (N) Total:</strong> <span>{product.nitrogeno_n_total}</span></div>}
+                            {product.nitrogeno_nitrico && <div class="flex justify-between"><strong class="text-gray-600">Nitrógeno (N) Nítrico:</strong> <span>{product.nitrogeno_nitrico}</span></div>}
+                            {product.nitrogeno_ureico && <div class="flex justify-between"><strong class="text-gray-600">Nitrógeno (N) Uréico:</strong> <span>{product.nitrogeno_ureico}</span></div>}
+                            {product.nitrogeno_n_amoniacal && <div class="flex justify-between"><strong class="text-gray-600">Nitrógeno (N) Amoniacal:</strong> <span>{product.nitrogeno_n_amoniacal}</span></div>}
+                            {product.oxido_de_potasio_k20_soluble_en_agua && <div class="flex justify-between"><strong class="text-gray-600">Óxido de Potasio K₂O (Soluble en Agua):</strong> <span>{product.oxido_de_potasio_k20_soluble_en_agua}</span></div>}
+                            {product.extracto_humico_total && <div class="flex justify-between"><strong class="text-gray-600">Extracto Húmico Total:</strong> <span>{product.extracto_humico_total}</span></div>}
+                            {product.acidos_humicos && <div class="flex justify-between"><strong class="text-gray-600">Ácidos Húmicos:</strong> <span>{product.acidos_humicos}</span></div>}
+                            {product.silicio && <div class="flex justify-between"><strong class="text-gray-600">Silicio (SIO₂):</strong> <span>{product.silicio}</span></div>}
+                            {product.acidos_falvicos && <div class="flex justify-between"><strong class="text-gray-600">Ácidos Falvicos:</strong> <span>{product.acidos_falvicos}</span></div>}
+                            {product.ascophylium_nodosum && <div class="flex justify-between"><strong class="text-gray-600">Ascophyllum Nodosum:</strong> <span>{product.ascophylium_nodosum}</span></div>}
+                            {product.extracto_humico_total && <div class="flex justify-between"><strong class="text-gray-600">Extracto húmico total:</strong> <span>{product.extracto_humico_total}</span></div>}
+                            {product.conductividad && <div class="flex justify-between"><strong class="text-gray-600">Conductividad:</strong> <span>{product.conductividad}</span></div>}
+                            {product.oxido_de_potasio && <div class="flex justify-between"><strong class="text-gray-600">Óxido de Potasio K₂O:</strong> <span>{product.oxido_de_potasio}</span></div>}
+                            {product.azufre_s && <div class="flex justify-between"><strong class="text-gray-600">Azufre S:</strong> <span>{product.azufre_s}</span></div>}
+                            {product.cobre && <div class="flex justify-between"><strong class="text-gray-600">Cobre (Cu):</strong> <span>{product.cobre}</span></div>}
+                            {product.fierrosoluble && <div class="flex justify-between"><strong class="text-gray-600">Fierro (Fe) Soluble:</strong> <span>{product.fierrosoluble}</span></div>}
+                            {product.fierro && <div class="flex justify-between"><strong class="text-gray-600">Fierro (Fe):</strong> <span>{product.fierro}</span></div>}
+                            {product.molibdeno && <div class="flex justify-between"><strong class="text-gray-600">Molibdeno (Mo):</strong> <span>{product.molibdeno}</span></div>}
+                            {product.fierroquelatado && <div class="flex justify-between"><strong class="text-gray-600">Fierro quelatado EDDHA (orto-orto):</strong> <span>{product.fierroquelatado}</span></div>}
+                            {product.aminoacidos_libres && <div class="flex justify-between"><strong class="text-gray-600">Aminoácidos Libres:</strong> <span>{product.aminoacidos_libres}</span></div>}
+                            {product.nitrogeno_organico && <div class="flex justify-between"><strong class="text-gray-600">Nitrogeno Orgánico:</strong> <span>{product.nitrogeno_organico}</span></div>}
+                              {product.manitol && <div class="flex justify-between"><strong class="text-gray-600">Manitol:</strong> <span>{product.manitol}</span></div>}
+                            {product.quelatado_con_eddha && <div class="flex justify-between"><strong class="text-gray-600">Quelatado con EDDHA:</strong> <span>{product.quelatado_con_eddha}</span></div>}
+                            {product.humedad_relativa_critica && <div class="flex justify-between"><strong class="text-gray-600">Humedad Relativa Crítica:</strong> <span>{product.humedad_relativa_critica}</span></div>}
+                            {product.acido_alginico && <div class="flex justify-between"><strong class="text-gray-600">Ácido alginico:</strong> <span>{product.acido_alginico}</span></div>}
+                            {product.nitrogeno && <div class="flex justify-between"><strong class="text-gray-600">Nitrógeno (N):</strong> <span>{product.nitrogeno}</span></div>}
+                            {product.fosforoP2O5 && <div class="flex justify-between"><strong class="text-gray-600">Fósforo (P₂O₅):</strong> <span>{product.fosforoP2O5}</span></div>}
+                            {product.pentoxido_de_fosforo && <div class="flex justify-between"><strong class="text-gray-600">Pentóxido de fósforo (P₂O₅):</strong> <span>{product.pentoxido_de_fosforo}</span></div>}
+                            {product.potasioK2O && <div class="flex justify-between"><strong class="text-gray-600">Potasio (K₂O):</strong> <span>{product.potasioK2O}</span></div>}
+                            {product.aminoacidos_vegetales && <div class="flex justify-between"><strong class="text-gray-600">Aminoácidos Vegetales:</strong> <span>{product.aminoacidos_vegetales}</span></div>}
+                            {product.materiaOrganica && <div class="flex justify-between"><strong class="text-gray-600">Materia Orgánica:</strong> <span>{product.materiaOrganica}</span></div>}
+                            {product.ph && <div class="flex justify-between"><strong class="text-gray-600">pH:</strong> <span>{product.ph}</span></div>}
+                            {product.boro && <div class="flex justify-between"><strong class="text-gray-600">Boro (B):</strong> <span>{product.boro}</span></div>}
+                            {product.Ce && <div class="flex justify-between"><strong class="text-gray-600">CE:</strong> <span>{product.Ce}</span></div>}
+                            {product.metales_pesados && <div class="flex justify-between"><strong class="text-gray-600">Metales Pesados:</strong> <span>{product.metales_pesados}</span></div>}
+                            {product.granulometria && <div class="flex justify-between"><strong class="text-gray-600">Granulometría:</strong> <span>{product.granulometria}</span></div>}
+                            {product.densidad && <div class="flex justify-between"><strong class="text-gray-600">Densidad:</strong> <span>{product.densidad}</span></div>}
+                            {product.solubilidad && <div class="flex justify-between"><strong class="text-gray-600">Solubilidad:</strong> <span>{product.solubilidad}</span></div>}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

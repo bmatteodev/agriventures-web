@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { products } from '../data/products';
+
+// Filtramos los productos por categoría
+const suelos = products.filter(p => p.grupo === 'Suelos');
+const foliares = products.filter(p => p.grupo === 'Foliares');
+const bioestimulantes = products.filter(p => p.grupo === 'Bioestimulantes');
+const especialidades = products.filter(p => p.grupo === 'Especialidades');
+---
+
+<Layout 
+    title="Productos | Agriventures" 
+    description="Catálogo de productos de Agriventures: Suelos, Foliares, Bioestimulantes y Especialidades."
+>
+    <main class="container mx-auto px-6 pt-28 pb-12">
+        <div class="text-center pt-8 pb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-green-800">Catálogo de Productos</h1>
+            <p class="text-gray-600 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">Soluciones innovadoras y eficientes para la nutrición y protección de sus cultivos.</p>
+        </div>
+
+        <!-- CATEGORÍA: SUELOS -->
+        <section id="suelos" class="py-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-green-600 pl-4">Suelos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {suelos.map(product => (
+                    <a href={`/productos/${product.slug}`} class="group block rounded-xl bg-gray-50 p-4 shadow-lg transition-shadow hover:shadow-2xl">
+                        {/* Contenedor de la imagen para controlar el aspecto y el fondo */}
+                        <div class="aspect-square w-full overflow-hidden rounded-lg bg-white">
+                            <img
+                                src={product.imagenUrl}
+                                alt={`Imagen de ${product.nombre}`}
+                                class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                        {/* Contenedor del texto y el botón */}
+                        <div class="mt-4 text-center">
+                            <h3 class="text-xl font-bold text-gray-800 truncate">{product.nombre}</h3>
+                            <div class="mt-4">
+                                <span class="inline-block rounded-full bg-green-600 px-6 py-2 text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-green-700">
+                                    Ver Detalles
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: FOLIARES -->
+        <section id="foliares" class="py-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-green-600 pl-4">Foliares</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {foliares.map(product => (
+                    <a href={`/productos/${product.slug}`} class="group block rounded-xl bg-gray-50 p-4 shadow-lg transition-shadow hover:shadow-2xl">
+                        <div class="aspect-square w-full overflow-hidden rounded-lg bg-white">
+                            <img
+                                src={product.imagenUrl}
+                                alt={`Imagen de ${product.nombre}`}
+                                class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-xl font-bold text-gray-800 truncate">{product.nombre}</h3>
+                            <div class="mt-4">
+                                <span class="inline-block rounded-full bg-green-600 px-6 py-2 text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-green-700">
+                                    Ver Detalles
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: BIOESTIMULANTES -->
+        <section id="bioestimulantes" class="py-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-green-600 pl-4">Bioestimulantes</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {bioestimulantes.map(product => (
+                    <a href={`/productos/${product.slug}`} class="group block rounded-xl bg-gray-50 p-4 shadow-lg transition-shadow hover:shadow-2xl">
+                        <div class="aspect-square w-full overflow-hidden rounded-lg bg-white">
+                            <img
+                                src={product.imagenUrl}
+                                alt={`Imagen de ${product.nombre}`}
+                                class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-xl font-bold text-gray-800 truncate">{product.nombre}</h3>
+                            <div class="mt-4">
+                                <span class="inline-block rounded-full bg-green-600 px-6 py-2 text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-green-700">
+                                    Ver Detalles
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+        <!-- CATEGORÍA: ESPECIALIDADES -->
+        <section id="especialidades" class="py-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 border-l-4 border-green-600 pl-4">Especialidades</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {especialidades.map(product => (
+                    <a href={`/productos/${product.slug}`} class="group block rounded-xl bg-gray-50 p-4 shadow-lg transition-shadow hover:shadow-2xl">
+                        <div class="aspect-square w-full overflow-hidden rounded-lg bg-white">
+                            <img
+                                src={product.imagenUrl}
+                                alt={`Imagen de ${product.nombre}`}
+                                class="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-xl font-bold text-gray-800 truncate">{product.nombre}</h3>
+                            <div class="mt-4">
+                                <span class="inline-block rounded-full bg-green-600 px-6 py-2 text-sm font-semibold text-white transition-colors duration-300 group-hover:bg-green-700">
+                                    Ver Detalles
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+    </main>
+</Layout>

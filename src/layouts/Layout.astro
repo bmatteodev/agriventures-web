@@ -38,18 +38,82 @@ const { title, description } = Astro.props;
             <div class="text-2xl font-bold text-green-800">
                 <a href="/">Agriventures</a>
             </div>
-            <!-- Menú de navegación con efecto hover mejorado -->
+
+            <!-- Menú de Escritorio -->
             <div class="hidden md:flex items-center space-x-2">
-                <a href="/productos" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50">Productos</a>
+                <div class="relative group">
+                    <a href="/productos" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50 flex items-center">
+                        Productos
+                        <svg class="w-4 h-4 ml-1 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                    <div class="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-xl py-1 z-50 hidden group-hover:block transition-all duration-300 opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-100">
+                        <a href="/productos#suelos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Suelos</a>
+                        <a href="/productos#foliares" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Foliares</a>
+                        <a href="/productos#bioestimulantes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Bioestimulantes</a>
+                        <a href="/productos#especialidades" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Especialidades</a>
+                    </div>
+                </div>
                 <a href="/#nosotros" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50">Sobre Nosotros</a>
                 <a href="/#equipo" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50">Nuestro Equipo</a>
                 <a href="/#contacto" class="bg-green-700 text-white px-5 py-2 rounded-full hover:bg-green-800 transition duration-300 shadow ml-6">Contáctanos</a>
             </div>
+
+            <!-- Botón de Menú Móvil (Hamburguesa) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-green-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
         </nav>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <!-- Elemento "Productos" con submenú -->
+            <div>
+                <button id="mobile-products-trigger" class="w-full flex justify-between items-center px-6 py-3 text-gray-700 hover:bg-green-50 text-left">
+                    <span>Productos</span>
+                    <svg id="mobile-arrow" class="w-5 h-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="mobile-products-submenu" class="hidden pl-8 bg-gray-50/50">
+                    <a href="/productos#suelos" class="block px-6 py-2 text-sm text-gray-600 hover:bg-green-100">Suelos</a>
+                    <a href="/productos#foliares" class="block px-6 py-2 text-sm text-gray-600 hover:bg-green-100">Foliares</a>
+                    <a href="/productos#bioestimulantes" class="block px-6 py-2 text-sm text-gray-600 hover:bg-green-100">Bioestimulantes</a>
+                    <a href="/productos#especialidades" class="block px-6 py-2 text-sm text-gray-600 hover:bg-green-100">Especialidades</a>
+                </div>
+            </div>
+
+            <a href="/#nosotros" class="block px-6 py-3 text-gray-700 hover:bg-green-50">Sobre Nosotros</a>
+            <a href="/#equipo" class="block px-6 py-3 text-gray-700 hover:bg-green-50">Nuestro Equipo</a>
+            <a href="/#contacto" class="block px-6 py-3 text-gray-700 hover:bg-green-50">Contáctanos</a>
+        </div>
     </header>
 
     <!-- La etiqueta <slot /> es donde Astro insertará el contenido de cada página -->
     <slot />
+
+    <!-- ========== BOTÓN FLOTANTE DE WHATSAPP ========== -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center group">
+        <!-- Burbuja de texto (oculta por defecto, visible en hover) -->
+        <div class="bg-white p-3 rounded-lg shadow-lg mr-3 hidden group-hover:block transition-all duration-300">
+            <p class="text-sm text-gray-800 font-semibold">¿Necesitas ayuda?</p>
+            <p class="text-xs text-gray-600">¡Habla con nosotros!</p>
+        </div>
+        <!-- Botón de WhatsApp -->
+        <a 
+            href="https://api.whatsapp.com/send?phone=56954121602" 
+            target="_blank" 
+            class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300"
+            aria-label="Contactar por WhatsApp"
+        >
+            <i class="fab fa-whatsapp fa-2x"></i>
+        </a>
+    </div>
 
     <!-- ========== FOOTER ========== -->
     <footer class="bg-gray-800 text-white py-10">
@@ -74,5 +138,31 @@ const { title, description } = Astro.props;
             </div>
         </div>
     </footer>
+
+    <!-- Script para manejar el menú móvil -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileProductsTrigger = document.getElementById('mobile-products-trigger');
+            const mobileProductsSubmenu = document.getElementById('mobile-products-submenu');
+            const mobileArrow = document.getElementById('mobile-arrow');
+
+            // Toggle menú principal
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Toggle submenú de productos
+            if (mobileProductsTrigger && mobileProductsSubmenu && mobileArrow) {
+                mobileProductsTrigger.addEventListener('click', () => {
+                    mobileProductsSubmenu.classList.toggle('hidden');
+                    mobileArrow.classList.toggle('rotate-180');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

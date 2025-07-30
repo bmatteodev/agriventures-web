@@ -50,7 +50,6 @@ const { title, description } = Astro.props;
                         </svg>
                     </a>
                     
-                    <!-- CAMBIO: Se añade un padding superior (pt-2) al contenedor del menú para "puentear" el espacio. -->
                     <div class="absolute left-0 pt-2 w-48 z-50 hidden group-hover:block transition-all duration-300 opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-100">
                         <div class="bg-white rounded-md shadow-xl py-1">
                             <a href="/productos#suelos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Suelos</a>
@@ -115,28 +114,55 @@ const { title, description } = Astro.props;
         </a>
     </div>
 
-    <footer class="bg-gray-800 text-white py-10">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-6">
-                <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://www.instagram.com/agriventures_cl/" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-instagram fa-2x"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=56954121602" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-whatsapp fa-2x"></i></a>
-                    <a href="https://www.linkedin.com/company/agriventures-cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-linkedin-in fa-2x"></i></a>
-                    <a href="https://www.facebook.com/Agriventures.cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-facebook-f fa-2x"></i></a>
-                    <a href="https://x.com/agriventures_cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-twitter fa-2x"></i></a>
+    <!-- ========== FOOTER MEJORADO ========== -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2">Agriventures</h3>
+                    <p class="text-gray-400 text-sm">Ciencia y Tecnología en Nutrición Vegetal.</p>
+                </div>
+    
+                <!-- Columna 2: Contacto -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Contacto</h3>
+                    <!-- CAMBIO: Se añade text-base para aumentar el tamaño de la fuente -->
+                    <ul class="space-y-3 text-gray-400 text-base">
+                        <li class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-envelope w-6 mr-2"></i>
+                            <a href="mailto:ventas@agriventures.cl" class="hover:text-white transition-colors">ventas@agriventures.cl</a>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-envelope w-6 mr-2"></i>
+                            <a href="mailto:contacto@agriventures.cl" class="hover:text-white transition-colors">contacto@agriventures.cl</a>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-phone w-6 mr-2"></i>
+                            <a href="tel:+56954121602" class="hover:text-white transition-colors">+56 9 5412 1602</a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- Columna 3: Síguenos -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="https://www.instagram.com/agriventures_cl/" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="https://www.linkedin.com/company/agriventures-cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                        <a href="https://www.facebook.com/Agriventures.cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="https://x.com/agriventures_cl" target="_blank" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110"><i class="fab fa-twitter fa-2x"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 pt-6">
-                <p>&copy; {new Date().getFullYear()} Agriventures. Todos los derechos reservados.</p>
-                <div class="mt-4 flex justify-center items-center space-x-4">
-                    <a href="mailto:ventas@agriventures.cl" class="text-gray-400 hover:text-white">ventas@agriventures.cl</a>
-                    <span class="text-gray-500">&bull;</span>
-                    <a href="tel:+56954121602" class="text-gray-400 hover:text-white">+56 9 5412 1602</a>
-                </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center">
+                <!-- CAMBIO: Se cambia de text-sm a text-base -->
+                <p class="text-gray-500 text-base">&copy; {new Date().getFullYear()} Agriventures. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

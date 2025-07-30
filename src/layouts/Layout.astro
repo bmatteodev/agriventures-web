@@ -41,6 +41,7 @@ const { title, description } = Astro.props;
 
             <!-- Menú de Escritorio -->
             <div class="hidden md:flex items-center space-x-2">
+                
                 <div class="relative group">
                     <a href="/productos" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50 flex items-center">
                         Productos
@@ -48,13 +49,18 @@ const { title, description } = Astro.props;
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </a>
-                    <div class="absolute left-0 mt-1 w-48 bg-white rounded-md shadow-xl py-1 z-50 hidden group-hover:block transition-all duration-300 opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-100">
-                        <a href="/productos#suelos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Suelos</a>
-                        <a href="/productos#foliares" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Foliares</a>
-                        <a href="/productos#bioestimulantes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Bioestimulantes</a>
-                        <a href="/productos#especialidades" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Especialidades</a>
+                    
+                    <!-- CAMBIO: Se añade un padding superior (pt-2) al contenedor del menú para "puentear" el espacio. -->
+                    <div class="absolute left-0 pt-2 w-48 z-50 hidden group-hover:block transition-all duration-300 opacity-0 transform scale-95 group-hover:opacity-100 group-hover:scale-100">
+                        <div class="bg-white rounded-md shadow-xl py-1">
+                            <a href="/productos#suelos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Suelos</a>
+                            <a href="/productos#foliares" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Foliares</a>
+                            <a href="/productos#bioestimulantes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Bioestimulantes</a>
+                            <a href="/productos#especialidades" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">Especialidades</a>
+                        </div>
                     </div>
                 </div>
+
                 <a href="/#nosotros" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50">Sobre Nosotros</a>
                 <a href="/#equipo" class="text-gray-600 hover:text-green-700 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-green-50">Nuestro Equipo</a>
                 <a href="/#contacto" class="bg-green-700 text-white px-5 py-2 rounded-full hover:bg-green-800 transition duration-300 shadow ml-6">Contáctanos</a>
@@ -72,7 +78,6 @@ const { title, description } = Astro.props;
 
         <!-- Menú Desplegable Móvil -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
-            <!-- Elemento "Productos" con submenú -->
             <div>
                 <button id="mobile-products-trigger" class="w-full flex justify-between items-center px-6 py-3 text-gray-700 hover:bg-green-50 text-left">
                     <span>Productos</span>
@@ -87,24 +92,19 @@ const { title, description } = Astro.props;
                     <a href="/productos#especialidades" class="block px-6 py-2 text-sm text-gray-600 hover:bg-green-100">Especialidades</a>
                 </div>
             </div>
-
             <a href="/#nosotros" class="block px-6 py-3 text-gray-700 hover:bg-green-50">Sobre Nosotros</a>
             <a href="/#equipo" class="block px-6 py-3 text-gray-700 hover:bg-green-50">Nuestro Equipo</a>
             <a href="/#contacto" class="block px-6 py-3 text-gray-700 hover:bg-green-50">Contáctanos</a>
         </div>
     </header>
 
-    <!-- La etiqueta <slot /> es donde Astro insertará el contenido de cada página -->
     <slot />
 
-    <!-- ========== BOTÓN FLOTANTE DE WHATSAPP ========== -->
     <div class="fixed bottom-6 right-6 z-50 flex items-center group">
-        <!-- Burbuja de texto (oculta por defecto, visible en hover) -->
         <div class="bg-white p-3 rounded-lg shadow-lg mr-3 hidden group-hover:block transition-all duration-300">
             <p class="text-sm text-gray-800 font-semibold">¿Necesitas ayuda?</p>
             <p class="text-xs text-gray-600">¡Habla con nosotros!</p>
         </div>
-        <!-- Botón de WhatsApp -->
         <a 
             href="https://api.whatsapp.com/send?phone=56954121602" 
             target="_blank" 
@@ -115,7 +115,6 @@ const { title, description } = Astro.props;
         </a>
     </div>
 
-    <!-- ========== FOOTER ========== -->
     <footer class="bg-gray-800 text-white py-10">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-6">
@@ -139,7 +138,6 @@ const { title, description } = Astro.props;
         </div>
     </footer>
 
-    <!-- Script para manejar el menú móvil -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -148,14 +146,12 @@ const { title, description } = Astro.props;
             const mobileProductsSubmenu = document.getElementById('mobile-products-submenu');
             const mobileArrow = document.getElementById('mobile-arrow');
 
-            // Toggle menú principal
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
                 });
             }
 
-            // Toggle submenú de productos
             if (mobileProductsTrigger && mobileProductsSubmenu && mobileArrow) {
                 mobileProductsTrigger.addEventListener('click', () => {
                     mobileProductsSubmenu.classList.toggle('hidden');

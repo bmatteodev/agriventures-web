@@ -557,8 +557,8 @@ export const products: Product[] = [
         imagenUrl: '/images/agri_30_40.png',
     },
     {
-        slug: 'AGRI-CALBOR',
-        nombre: 'AGRI CALBOR',
+        slug: 'DRAGON-BOLCAR',
+        nombre: 'DRAGON BOLCAR',
         grupo: 'Foliares',
         grupo2: 'Fertilizante',
         tipo: 'Corrector Nutricional',
@@ -575,7 +575,7 @@ export const products: Product[] = [
         metales_pesados: 'As, Pb, Cd y Hg < 1 mg/L',
         solubilidad: 'a 20°C 100%',
         fichaTecnicaUrl: '/fichas/agri_calbor.pdf',
-        imagenUrl: '/images/agri_calbor.png',
+        imagenUrl: '/images/dragon_bolcar.jpeg'
     },
 
     // ---------- ESPECIALIDADES ---------- //
@@ -591,8 +591,8 @@ export const products: Product[] = [
         imagenUrl: '/images/plantarell.png',
     },
     {
-        slug: 'AGRIPASTE-40-10-10',
-        nombre: 'AGRIPASTE 40-10-10',
+        slug: 'DRAGON-PASTE-40-10-10',
+        nombre: 'DRAGON PASTE 40-10-10',
         grupo: 'Especialidades',
         descripcion: 'Fertilizante en pasta con mayor contenido de nitrógeno. Alta acidez para reducir alcalinidad y liberar elementos fijados de temporadas anteriores. ',
         solubilidad: 'a 20ºC 400 g/l',
@@ -604,7 +604,7 @@ export const products: Product[] = [
         potasioK2O: '10%',
         metales_pesados: 'As < 10 mg/l , Pb, Cd y Hg < 1 mg/l',
         fichaTecnicaUrl: '/fichas/agripaste_40_10_10.pdf',
-        imagenUrl: '/images/agripaste_40_10_10.png',
+        imagenUrl: '/images/dragonpaste_401010.jpeg',
     },
       {
         slug: 'AGRIPASTE-20-20-20',
@@ -639,10 +639,10 @@ export const products: Product[] = [
         imagenUrl: '/images/agripaste_15_20_50.png',
     },
           {
-        slug: 'AGRIPASTE-12-61-0',
-        nombre: 'AGRIPASTE 12-61-0',
+        slug: 'DRAGON-PASTE-12-61-0',
+        nombre: 'DRAGON PASTE 12-61-0',
         grupo: 'Especialidades',
-        descripcion: 'AGRI PASTE 12-61-0 es una formulación única adecuada para el desarrollo de la raíz y las etapas de florecimiento que se puede aplicar a través de la fertirrigación de la pulverización foliar.',
+        descripcion: 'DRAGON PASTE 12-61-0 es una formulación única adecuada para el desarrollo de la raíz y las etapas de florecimiento que se puede aplicar a través de la fertirrigación de la pulverización foliar.',
         solubilidad: 'a 20°C 500 g/l (50%)',
         ph: '2-3',
         densidad: '1650 g/ml',
@@ -652,7 +652,7 @@ export const products: Product[] = [
         potasioK2O: '0%',
         metales_pesados: 'As < 15 mg/l , Cd < 10 mg/l , Pb y Hg < 1 mg/l',
         fichaTecnicaUrl: '/fichas/agripaste_12_61_0.pdf',
-        imagenUrl: '/images/agripaste_12_61_0.png',
+        imagenUrl: '/images/dragonpaste_12610.jpeg',
     },
     {
         slug: 'AGRIPASTE-5-50-30',
